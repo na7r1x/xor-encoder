@@ -1,24 +1,49 @@
-# xor-encode
+# xor-encoder
 
-## Project setup
-```
-npm install
-```
+A simple web tool for encoding and decoding strings based on the IBM WebSphere XOR Algorithm.
 
-### Compiles and hot-reloads for development
-```
+## Usage
+
+### Demo
+
+https://xor.ivnn.dev
+
+### Run locally
+
+Prerequisites: 
+- NodeJS 
+- npm
+
+```bash
+git clone https://github.com/na7r1x/xor-encoder.git
+cd xor-encoder
+npm install 
 npm run serve
 ```
 
-### Compiles and minifies for production
-```
-npm run build
+### Run in a container
+
+```bash
+docker run -it -p 8080:80 --rm --name xor-encoder na7r1x/xor-encoder
 ```
 
-### Lints and fixes files
+### Deploy to Kubernetes
+
+```bash
+git clone https://github.com/na7r1x/xor-encoder.git
 ```
-npm run lint
+- For a basic NodePort deployment:
+
+*(Adjust the yaml for the desired nodePort!)*
+
+```bash
+kubectl apply -f ./deploy/basic-nodeport.yaml
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+- For an example Nginx Ingress deployment:
+
+*(Adjust `<your hostname>` before applying.)*
+
+```bash
+kubectl apply -f ./deploy/basic-ingress-nginx.yaml
+```

@@ -1,0 +1,41 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: xor-encoder
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: xor-encoder
+  namespace: xor-encoder
+spec:
+  selector:
+    app: xor-encoder
+  ports:
+    - name: http-80
+      protocol: TCP
+      port: 80
+      nodePort: 32301
+  type: NodePort
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: xor-encoder
+  namespace: xor-encoder
+spec:
+  selector:
+    matchLabels:
+      app: xor-encoder
+  template:
+    metadata:
+      labels:
+        app: xor-encoder
+    spec:
+      containers:
+        - name: xor-encoder
+          image: na7r1x/xor-encoder:latest
+          resources: {}
+          ports:
+            - containerPort: 80
+              protocol: TCP
