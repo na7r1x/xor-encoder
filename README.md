@@ -47,3 +47,13 @@ kubectl apply -f ./deploy/basic-nodeport.yaml
 ```bash
 kubectl apply -f ./deploy/basic-ingress-nginx.yaml
 ```
+
+## Dev Notes
+
+### Publish container 
+
+```bash
+docker build -t xor-encoder .
+docker tag xor-encoder na7r1x/xor-encoder
+docker push na7r1x/xor-encoder 
+```
